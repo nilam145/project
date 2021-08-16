@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <title>
+        User Registration
+    </title>
+
+    <script src="https://kit.fontawesome.com/71e72d940f.js" crossorigin="anonymous"></script>
+
+    <style>
+ body
+    {
+        background-image: linear-gradient(to left,  #DDA0DD, #B0E0E6);
+    }
+
+
+    ul{
+                background-color:#DA70D6;
+                list-style-type: none;
+                overflow: hidden;
+            }
+            li{
+                float: right;
+            }
+            li a{
+                display: inline-block;
+                color: white;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+  .cl{
+   float:left;
+    color: #00fffc;
+   }
+
+
+.nav{
+    color: #00fffc;
+}
+
+li {
+    text-shadow: 2px 4px 6px #060606;
+    font-size: 20px;
+}
+
+body {
+  margin: 0;
+
+}
+
+    </style>
+</head>
+<body>
+
+<ul>
+
+    <li><a class="nav"  href="{%url 'logout'%}"><i class="fas fa-sign-out-alt"></i> &nbsp; Logout</a></li>
+    <li><a class="nav" href="{%url 'login'%}"> <i class="fas fa-sign-in-alt"></i> &nbsp; Login</a></li>
+	<li><a class="nav"  href="{%url 'signup'%}">  <i class="fas fa-user"></i> &nbsp; Sign up</a></li>
+    <li><a class="nav"  href="{%url 'profile'%}"><i class="fas fa-home"></i> &nbsp; Home</a></li>
+	<li  class="cl"><p><i><b>Profile</b></i></p></li>
+
+</ul>
+
+<form action="" method="post" novalidate style="border-style: solid; margin: 35%; padding:7%; border-radius: 15px 50px; background-image: linear-gradient(to left,  #B0E0E6,#B0E0E6);">
+{% csrf_token %}
+   {% if form.non_field_errors %}
+     {% for error in form.non_field_errors %}
+        <p class="er">{{error}}</p>
+     {%endfor %}
+    {% endif %}
+
+    {% for fm in form %}
+    {{fm.label_tag}} {{fm}} <br><br>
+    {% endfor %}
+<center>
+<input  style="background: #DA70D6; padding:4%; font-size: 1rem; color:white; border-radius: 25px; font-weight:bold;" type="submit" value="submit" >  </input>
+</center>
+    <br>
+     <center>
+  <sub style="text-align: left;"><a href="{% url 'login' %}" style="text-decoration: none; color: blue; padding:2%; cursor:pointer; margin-right:2%;">Already have an account ?</a></sub>
+        </center>
+</form>
+</body>
+</html>
